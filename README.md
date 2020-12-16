@@ -22,9 +22,7 @@ Para executar esse projeto na sua máquina, é necessário ter instalado nela o 
 
 Após a instalação do PostgreSQL, abra o pgAdmin, se ficar muito tempo na tela de carregamento, abra o console do navegador e veja se há um erro relacionado ao MIME Type ser **text/pain**. Caso esse erro esteja presente, pare a execução do pgAdmin, abra o [Editor de Registro](https://support.microsoft.com/pt-br/windows/como-abrir-o-editor-do-registro-no-windows-10-deab38e6-91d6-e0aa-4b7c-8878d9e07b11) e na chave **HKEY_CLASSES_ROOT\\.js** altere o **Content Type** para **text/javascript**, como mostrado na imagem abaixo.
 
-![Correção para o pgAdmin - Editor de registo](C:\Users\ikaro.souza\osb\doc\pgAdmin_editor_de_registro.png)
-
-
+![Correção para o pgAdmin - Editor de registo](/pgAdmin_editor_de_registro.png)
 
 
 
