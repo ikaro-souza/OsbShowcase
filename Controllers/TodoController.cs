@@ -81,6 +81,13 @@ namespace OsbShowcase.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um Todo
+        /// </summary>
+        /// <param name="data">Dados de atualização do Todo</param>
+        /// <returns>Retorna o resultado da atualização do Todo</returns>
+        /// <response code="200">Todo atualizado</response>
+        /// <response code="404">Todo não encontrado</response>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -102,6 +109,13 @@ namespace OsbShowcase.Controllers
 
         }
 
+        /// <summary>
+        /// Remove um Todo
+        /// </summary>
+        /// <param name="todoId">Id do Todo</param>
+        /// <returns>Retorna o resultado da remoção do Todo</returns>
+        /// <response code="200">Todo removido</response>
+        /// <response code="404">Todo não encontrado</response>
         [HttpDelete("{todoId:long?}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
