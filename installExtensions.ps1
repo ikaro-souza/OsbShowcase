@@ -1,4 +1,4 @@
-Get-Content '.\.vscode\extensions.txt' | ForEach-Object { code --install-extension $_ --force}
+Get-Content '.\extensions.txt' | ForEach-Object { code --install-extension $_ --force}
 # SIG # Begin signature block
 # MIIFrQYJKoZIhvcNAQcCoIIFnjCCBZoCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
