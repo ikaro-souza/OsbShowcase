@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using OsbShowcase.Models;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections.Generic;
 
 namespace OsbShowcase.Controllers
 {
@@ -81,8 +82,17 @@ namespace OsbShowcase.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um Todo
+        /// </summary>
+        /// <param name="data">Dados de atualização do Todo</param>
+        /// <returns>Retorna o resultado da atualização do Todo</returns>
+        /// <response code="200">Todo atualizado</response>
+        /// <response code="400">Erro na atualização do Todo</response>
+        /// <response code="404">Todo não encontrado</response>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Update([FromBody] TodoDto data)
         {
@@ -92,16 +102,30 @@ namespace OsbShowcase.Controllers
             {
                 var todo = await _service.UpdateTodo(data);
                 response.Data = todo;
+
                 return Ok(response);
             }
             catch (Exception e)
             {
                 response.Message = e.Message;
-                return BadRequest(response);
-            }
 
+                switch (e)
+                {
+                    case KeyNotFoundException:
+                        return NotFound(response);
+                    default:
+                        return BadRequest(response);
+                }
+            }
         }
 
+        /// <summary>
+        /// Remove um Todo
+        /// </summary>
+        /// <param name="todoId">Id do Todo</param>
+        /// <returns>Retorna o resultado da remoção do Todo</returns>
+        /// <response code="200">Todo removido</response>
+        /// <response code="404">Todo não encontrado</response>
         [HttpDelete("{todoId:long?}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
